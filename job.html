@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Job Portal Dashboard</title>
+    <style>
+        /* Fix #4: real responsive behavior instead of Tableau's generic 1500px-min boilerplate */
+        .tableauPlaceholder {
+            position: relative;
+            width: 100%;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        .tableau-fallback {
+            display: none;
+            padding: 24px;
+            border: 1px solid #ccc;
+            text-align: center;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!--
+      REPLACE ALL THREE PLACEHOLDERS BELOW:
+        __WORKBOOK_PATH__   -> e.g. RealJobPortal_16897123456780/Dashboard1
+        __VIEW_URL__        -> e.g. https://public.tableau.com/views/RealJobPortal_16897123456780/Dashboard1
+        __STATIC_IMG_PATH__ -> the static image path Tableau gives you (e.g. Re/RealJobPortal_.../Dashboard1)
+    -->
+    <div class='tableauPlaceholder' id='viz1786202825318'>
+        <noscript>
+            <a href='https://public.tableau.com/views/realjobportal/Dashboard1' target='_blank' rel='noopener'>
+                <img alt='Real Job Portal Dashboard' src='https://public.tableau.com/static/images/re/realjobportal/Dashboard1/1_rss.png' style='border: none' />
+            </a>
+        </noscript>
+        <object class='tableauViz' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+            <param name='embed_code_version' value='3' />
+            <param name='site_root' value='' />
+            <param name='name' value='realjobportal/Dashboard1' />
+            <param name='tabs' value='yes' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image' value='https://public.tableau.com/static/images/re/realjobportal/Dashboard1/1.png' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='en-US' />
+        </object>
+    </div>
+
+    <!-- Fix #3: visible fallback if the API script fails to load -->
+    <div class="tableau-fallback" id="tableau-fallback">
+        Unable to load the dashboard.
+        <a href="https://public.tableau.com/views/realjobportal/Dashboard1" target="_blank" rel="noopener">View it directly on Tableau Public</a>.
+    </div>
+
+    <script type="text/javascript">
+        (function () {
+            var divElement = document.getElementById('viz1786202825318');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            var fallback = document.getElementById('tableau-fallback');
+
+            // Fix #4: sane responsive sizing instead of forcing 1500px min-width on mid-size screens
+            var width = divElement.offsetWidth;
+            if (width > 800) {
+                vizElement.style.width = '100%';
+                vizElement.style.height = '827px';
+            } else if (width > 500) {
+                vizElement.style.width = '100%';
+                vizElement.style.height = '627px';
+            } else {
+                vizElement.style.width = '100%';
+                vizElement.style.height = '727px';
+            }
+
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+
+            // Fix #3: error handling — if the script fails to load, show a real fallback
+            scriptElement.onerror = function () {
+                console.error('Tableau viz_v1.js failed to load.');
+                divElement.style.display = 'none';
+                fallback.style.display = 'block';
+            };
+
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        })();
+    </script>
+</body>
+</html>
